@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <link rel="stylesheet" href="./src//styles/reset.css" />
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-auto-replace-svg="nest"></script>
+
+    <title>Shape Generator</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="container">
+            <div class="info-panel">
+                <div class="info">
+                    <span>Number of current shapes:</span>
+                    <span id="current-shapes"></span>
+                </div>
+                <div class="info">
+                    <span>Surface area occupied by shapes:</span>
+                    <span id="occupied-area"></span>
+                </div>
+            </div>
+            <div class="scene"></div>
+            <div class="ctrl-panel">
+                <div class="ctrl">
+                    <span>SHAPES / SEC</span>
+                    <div class="ctrl-items">
+                        <button id="decr-items">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <input type="text" value="" disabled/>
+                        <button id="incr-items">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="ctrl">
+                    <span>GRAVITY</span>
+                    <div class="ctrl-gravity">
+                        <button id="decr-gravity">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <input type="text" value="" disabled/>
+                        <button id="incr-gravity">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./dist/esbuild/index.js"></script>
+</body>
+</html>
