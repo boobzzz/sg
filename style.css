@@ -1,0 +1,122 @@
+body {
+    --blue: skyblue;
+    --border-r: 10px;
+    --btn-height: 36px;
+    font-family: "Montserrat", sans-serif;
+}
+
+#wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.scene {
+    width: 640px;
+    height: 480px;
+}
+
+.info-panel,
+.ctrl-panel {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+    .info-panel > div + div,
+    .ctrl-panel > div + div {
+        border-left: 1px solid #ddd;
+    }
+
+.info-panel {
+    border: 1px solid #ddd;
+    border-top-left-radius: var(--border-r);
+    border-top-right-radius: var(--border-r);
+}
+
+.ctrl-panel {
+    border: 1px solid #ddd;
+    border-bottom-left-radius: var(--border-r);
+    border-bottom-right-radius: var(--border-r);
+}
+
+.info,
+.ctrl {
+    width: 50%;
+}
+
+.info {
+    padding: 0.5em 1em;
+}
+    .info span {
+        font-size: 0.75em;
+    }
+
+#current-shapes,
+#occupied-area {
+    font-weight: 600;
+}
+
+.ctrl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 1em;
+}
+    .ctrl > span {
+        margin-bottom: 0.5em;
+        font-weight: 600;
+        font-size: 0.75em;
+    }
+    .ctrl button {
+        width: 52px;
+        height: var(--btn-height);
+        font-size: 20px;
+        border: 2px solid var(--blue);
+        background-color: #fff;
+        color: var(--blue);
+        transition: all 0.3s ease;
+    }
+    .ctrl button:hover:not(:disabled) {
+        background-color:var(--blue);
+        color:white;
+    }
+    .ctrl button:disabled {
+        border-color: #ccc;
+        color: #ccc;
+    }
+
+#decr-items,
+#decr-gravity {
+    border-top-left-radius: var(--border-r);
+    border-bottom-left-radius: var(--border-r);
+}
+
+#incr-items,
+#incr-gravity {
+    border-top-right-radius: var(--border-r);
+    border-bottom-right-radius: var(--border-r);
+}
+
+.ctrl-items,
+.ctrl-gravity {
+    display: flex;
+    align-items: center;
+}
+    .ctrl-items input,
+    .ctrl-gravity input {
+        margin: 0 2px;
+        width: 44px;
+        height: var(--btn-height);
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        text-align: center;
+        border: 1px solid #ddd;
+        background-color: #fff;
+    }
