@@ -14667,18 +14667,18 @@
     }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   }
-  function __awaiter(thisArg, _arguments, P, generator2) {
+  function __awaiter(thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function(resolve3, reject2) {
       function fulfilled(value) {
         try {
-          step(generator2.next(value));
+          step(generator.next(value));
         } catch (e) {
           reject2(e);
         }
       }
       function rejected(value) {
         try {
-          step(generator2["throw"](value));
+          step(generator["throw"](value));
         } catch (e) {
           reject2(e);
         }
@@ -14688,7 +14688,7 @@
           resolve4(result.value);
         }).then(fulfilled, rejected);
       }
-      step((generator2 = generator2.apply(thisArg, _arguments || [])).next());
+      step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
   }
   function __generator(thisArg, body) {
@@ -17191,8 +17191,8 @@
   var temp = new Float32Array(3);
   var DEFAULT_SHADERS = {};
   var Graphics = function(_super) {
-    __extends6(Graphics2, _super);
-    function Graphics2(geometry) {
+    __extends6(Graphics3, _super);
+    function Graphics3(geometry) {
       if (geometry === void 0) {
         geometry = null;
       }
@@ -17216,18 +17216,18 @@
       _this.blendMode = BLEND_MODES2.NORMAL;
       return _this;
     }
-    Object.defineProperty(Graphics2.prototype, "geometry", {
+    Object.defineProperty(Graphics3.prototype, "geometry", {
       get: function() {
         return this._geometry;
       },
       enumerable: false,
       configurable: true
     });
-    Graphics2.prototype.clone = function() {
+    Graphics3.prototype.clone = function() {
       this.finishPoly();
-      return new Graphics2(this._geometry);
+      return new Graphics3(this._geometry);
     };
-    Object.defineProperty(Graphics2.prototype, "blendMode", {
+    Object.defineProperty(Graphics3.prototype, "blendMode", {
       get: function() {
         return this.state.blendMode;
       },
@@ -17237,7 +17237,7 @@
       enumerable: false,
       configurable: true
     });
-    Object.defineProperty(Graphics2.prototype, "tint", {
+    Object.defineProperty(Graphics3.prototype, "tint", {
       get: function() {
         return this._tint;
       },
@@ -17247,21 +17247,21 @@
       enumerable: false,
       configurable: true
     });
-    Object.defineProperty(Graphics2.prototype, "fill", {
+    Object.defineProperty(Graphics3.prototype, "fill", {
       get: function() {
         return this._fillStyle;
       },
       enumerable: false,
       configurable: true
     });
-    Object.defineProperty(Graphics2.prototype, "line", {
+    Object.defineProperty(Graphics3.prototype, "line", {
       get: function() {
         return this._lineStyle;
       },
       enumerable: false,
       configurable: true
     });
-    Graphics2.prototype.lineStyle = function(options, color, alpha, alignment, native) {
+    Graphics3.prototype.lineStyle = function(options, color, alpha, alignment, native) {
       if (options === void 0) {
         options = null;
       }
@@ -17282,7 +17282,7 @@
       }
       return this.lineTextureStyle(options);
     };
-    Graphics2.prototype.lineTextureStyle = function(options) {
+    Graphics3.prototype.lineTextureStyle = function(options) {
       options = Object.assign({
         width: 0,
         texture: Texture.WHITE,
@@ -17310,7 +17310,7 @@
       }
       return this;
     };
-    Graphics2.prototype.startPoly = function() {
+    Graphics3.prototype.startPoly = function() {
       if (this.currentPath) {
         var points = this.currentPath.points;
         var len = this.currentPath.points.length;
@@ -17325,7 +17325,7 @@
         this.currentPath.closeStroke = false;
       }
     };
-    Graphics2.prototype.finishPoly = function() {
+    Graphics3.prototype.finishPoly = function() {
       if (this.currentPath) {
         if (this.currentPath.points.length > 2) {
           this.drawShape(this.currentPath);
@@ -17335,13 +17335,13 @@
         }
       }
     };
-    Graphics2.prototype.moveTo = function(x, y) {
+    Graphics3.prototype.moveTo = function(x, y) {
       this.startPoly();
       this.currentPath.points[0] = x;
       this.currentPath.points[1] = y;
       return this;
     };
-    Graphics2.prototype.lineTo = function(x, y) {
+    Graphics3.prototype.lineTo = function(x, y) {
       if (!this.currentPath) {
         this.moveTo(0, 0);
       }
@@ -17353,7 +17353,7 @@
       }
       return this;
     };
-    Graphics2.prototype._initCurve = function(x, y) {
+    Graphics3.prototype._initCurve = function(x, y) {
       if (x === void 0) {
         x = 0;
       }
@@ -17368,7 +17368,7 @@
         this.moveTo(x, y);
       }
     };
-    Graphics2.prototype.quadraticCurveTo = function(cpX, cpY, toX, toY) {
+    Graphics3.prototype.quadraticCurveTo = function(cpX, cpY, toX, toY) {
       this._initCurve();
       var points = this.currentPath.points;
       if (points.length === 0) {
@@ -17377,12 +17377,12 @@
       QuadraticUtils.curveTo(cpX, cpY, toX, toY, points);
       return this;
     };
-    Graphics2.prototype.bezierCurveTo = function(cpX, cpY, cpX2, cpY2, toX, toY) {
+    Graphics3.prototype.bezierCurveTo = function(cpX, cpY, cpX2, cpY2, toX, toY) {
       this._initCurve();
       BezierUtils.curveTo(cpX, cpY, cpX2, cpY2, toX, toY, this.currentPath.points);
       return this;
     };
-    Graphics2.prototype.arcTo = function(x1, y1, x2, y2, radius) {
+    Graphics3.prototype.arcTo = function(x1, y1, x2, y2, radius) {
       this._initCurve(x1, y1);
       var points = this.currentPath.points;
       var result = ArcUtils.curveTo(x1, y1, x2, y2, radius, points);
@@ -17392,7 +17392,7 @@
       }
       return this;
     };
-    Graphics2.prototype.arc = function(cx, cy, radius, startAngle, endAngle, anticlockwise) {
+    Graphics3.prototype.arc = function(cx, cy, radius, startAngle, endAngle, anticlockwise) {
       if (anticlockwise === void 0) {
         anticlockwise = false;
       }
@@ -17427,7 +17427,7 @@
       ArcUtils.arc(startX, startY, cx, cy, radius, startAngle, endAngle, anticlockwise, points);
       return this;
     };
-    Graphics2.prototype.beginFill = function(color, alpha) {
+    Graphics3.prototype.beginFill = function(color, alpha) {
       if (color === void 0) {
         color = 0;
       }
@@ -17436,7 +17436,7 @@
       }
       return this.beginTextureFill({ texture: Texture.WHITE, color, alpha });
     };
-    Graphics2.prototype.beginTextureFill = function(options) {
+    Graphics3.prototype.beginTextureFill = function(options) {
       options = Object.assign({
         texture: Texture.WHITE,
         color: 16777215,
@@ -17458,24 +17458,24 @@
       }
       return this;
     };
-    Graphics2.prototype.endFill = function() {
+    Graphics3.prototype.endFill = function() {
       this.finishPoly();
       this._fillStyle.reset();
       return this;
     };
-    Graphics2.prototype.drawRect = function(x, y, width, height) {
+    Graphics3.prototype.drawRect = function(x, y, width, height) {
       return this.drawShape(new Rectangle(x, y, width, height));
     };
-    Graphics2.prototype.drawRoundedRect = function(x, y, width, height, radius) {
+    Graphics3.prototype.drawRoundedRect = function(x, y, width, height, radius) {
       return this.drawShape(new RoundedRectangle(x, y, width, height, radius));
     };
-    Graphics2.prototype.drawCircle = function(x, y, radius) {
+    Graphics3.prototype.drawCircle = function(x, y, radius) {
       return this.drawShape(new Circle(x, y, radius));
     };
-    Graphics2.prototype.drawEllipse = function(x, y, width, height) {
+    Graphics3.prototype.drawEllipse = function(x, y, width, height) {
       return this.drawShape(new Ellipse(x, y, width, height));
     };
-    Graphics2.prototype.drawPolygon = function() {
+    Graphics3.prototype.drawPolygon = function() {
       var arguments$1 = arguments;
       var path = [];
       for (var _i = 0; _i < arguments.length; _i++) {
@@ -17497,7 +17497,7 @@
       this.drawShape(shape);
       return this;
     };
-    Graphics2.prototype.drawShape = function(shape) {
+    Graphics3.prototype.drawShape = function(shape) {
       if (!this._holeMode) {
         this._geometry.drawShape(shape, this._fillStyle.clone(), this._lineStyle.clone(), this._matrix);
       } else {
@@ -17505,7 +17505,7 @@
       }
       return this;
     };
-    Graphics2.prototype.clear = function() {
+    Graphics3.prototype.clear = function() {
       this._geometry.clear();
       this._lineStyle.reset();
       this._fillStyle.reset();
@@ -17515,11 +17515,11 @@
       this.currentPath = null;
       return this;
     };
-    Graphics2.prototype.isFastRect = function() {
+    Graphics3.prototype.isFastRect = function() {
       var data = this._geometry.graphicsData;
       return data.length === 1 && data[0].shape.type === SHAPES.RECT && !data[0].holes.length && !(data[0].lineStyle.visible && data[0].lineStyle.width);
     };
-    Graphics2.prototype._render = function(renderer) {
+    Graphics3.prototype._render = function(renderer) {
       this.finishPoly();
       var geometry = this._geometry;
       var hasuint32 = renderer.context.supports.uint32Indices;
@@ -17534,7 +17534,7 @@
         this._renderDirect(renderer);
       }
     };
-    Graphics2.prototype._populateBatches = function() {
+    Graphics3.prototype._populateBatches = function() {
       var geometry = this._geometry;
       var blendMode = this.blendMode;
       var len = geometry.batches.length;
@@ -17563,7 +17563,7 @@
         this.batches[i] = batch;
       }
     };
-    Graphics2.prototype._renderBatched = function(renderer) {
+    Graphics3.prototype._renderBatched = function(renderer) {
       if (!this.batches.length) {
         return;
       }
@@ -17576,7 +17576,7 @@
         renderer.plugins[this.pluginName].render(batch);
       }
     };
-    Graphics2.prototype._renderDirect = function(renderer) {
+    Graphics3.prototype._renderDirect = function(renderer) {
       var shader = this._resolveDirectShader(renderer);
       var geometry = this._geometry;
       var tint = this.tint;
@@ -17595,7 +17595,7 @@
         this._renderDrawCallDirect(renderer, geometry.drawCalls[i]);
       }
     };
-    Graphics2.prototype._renderDrawCallDirect = function(renderer, drawCall) {
+    Graphics3.prototype._renderDrawCallDirect = function(renderer, drawCall) {
       var texArray = drawCall.texArray, type = drawCall.type, size = drawCall.size, start = drawCall.start;
       var groupTextureCount = texArray.count;
       for (var j = 0; j < groupTextureCount; j++) {
@@ -17603,7 +17603,7 @@
       }
       renderer.geometry.draw(type, size, start);
     };
-    Graphics2.prototype._resolveDirectShader = function(renderer) {
+    Graphics3.prototype._resolveDirectShader = function(renderer) {
       var shader = this.shader;
       var pluginName = this.pluginName;
       if (!shader) {
@@ -17625,7 +17625,7 @@
       }
       return shader;
     };
-    Graphics2.prototype._calculateBounds = function() {
+    Graphics3.prototype._calculateBounds = function() {
       this.finishPoly();
       var geometry = this._geometry;
       if (!geometry.graphicsData.length) {
@@ -17634,11 +17634,11 @@
       var _a3 = geometry.bounds, minX = _a3.minX, minY = _a3.minY, maxX = _a3.maxX, maxY = _a3.maxY;
       this._bounds.addFrame(this.transform, minX, minY, maxX, maxY);
     };
-    Graphics2.prototype.containsPoint = function(point) {
-      this.worldTransform.applyInverse(point, Graphics2._TEMP_POINT);
-      return this._geometry.containsPoint(Graphics2._TEMP_POINT);
+    Graphics3.prototype.containsPoint = function(point) {
+      this.worldTransform.applyInverse(point, Graphics3._TEMP_POINT);
+      return this._geometry.containsPoint(Graphics3._TEMP_POINT);
     };
-    Graphics2.prototype.calculateTints = function() {
+    Graphics3.prototype.calculateTints = function() {
       if (this.batchTint !== this.tint) {
         this.batchTint = this.tint;
         var tintRGB = hex2rgb(this.tint, temp);
@@ -17653,7 +17653,7 @@
         }
       }
     };
-    Graphics2.prototype.calculateVertices = function() {
+    Graphics3.prototype.calculateVertices = function() {
       var wtID = this.transform._worldID;
       if (this._transformID === wtID) {
         return;
@@ -17676,7 +17676,7 @@
         vertexData[count++] = d * y + b * x + ty;
       }
     };
-    Graphics2.prototype.closePath = function() {
+    Graphics3.prototype.closePath = function() {
       var currentPath = this.currentPath;
       if (currentPath) {
         currentPath.closeStroke = true;
@@ -17684,21 +17684,21 @@
       }
       return this;
     };
-    Graphics2.prototype.setMatrix = function(matrix) {
+    Graphics3.prototype.setMatrix = function(matrix) {
       this._matrix = matrix;
       return this;
     };
-    Graphics2.prototype.beginHole = function() {
+    Graphics3.prototype.beginHole = function() {
       this.finishPoly();
       this._holeMode = true;
       return this;
     };
-    Graphics2.prototype.endHole = function() {
+    Graphics3.prototype.endHole = function() {
       this.finishPoly();
       this._holeMode = false;
       return this;
     };
-    Graphics2.prototype.destroy = function(options) {
+    Graphics3.prototype.destroy = function(options) {
       this._geometry.refCount--;
       if (this._geometry.refCount === 0) {
         this._geometry.dispose();
@@ -17716,8 +17716,8 @@
       this.batches = null;
       _super.prototype.destroy.call(this, options);
     };
-    Graphics2._TEMP_POINT = new Point();
-    return Graphics2;
+    Graphics3._TEMP_POINT = new Point();
+    return Graphics3;
   }(Container);
 
   // node_modules/@pixi/sprite/dist/esm/sprite.js
@@ -23962,11 +23962,6 @@ void main() {
   Application.registerPlugin(TickerPlugin);
   Application.registerPlugin(AppLoaderPlugin);
 
-  // src/utils/utils.ts
-  var randomize = (max) => {
-    return Math.floor(Math.random() * max);
-  };
-
   // src/components/Scene.ts
   var Dimentions;
   (function(Dimentions2) {
@@ -23976,7 +23971,7 @@ void main() {
   var config = {
     width: 640,
     height: 480,
-    backgroundAlpha: 0.2,
+    backgroundAlpha: 0.15,
     antialias: true
   };
   var Scene = class {
@@ -23990,6 +23985,23 @@ void main() {
     get app() {
       return this._app;
     }
+    addToScene(objList) {
+      objList.forEach((obj) => {
+        this._app.stage.addChild(obj);
+      });
+    }
+    removeFromScene(obj) {
+      this._app.stage.removeChild(obj);
+    }
+    clearScene() {
+      this._app.stage.removeChildren();
+    }
+    onSceneClick(handler) {
+      this._app.stage.on("click", handler);
+    }
+    getCurrentShapes() {
+      return this._app.stage.children.length.toString();
+    }
     getTotalShapesArea() {
       let totalArea = 0;
       this._app.stage.children.forEach((shape) => {
@@ -24001,7 +24013,78 @@ void main() {
     }
   };
 
-  // src/mvc/Shapes.ts
+  // src/controler/Generator.ts
+  var Generator = class {
+    constructor(shapes, ui) {
+      this._shapes = shapes;
+      this._info = ui.info;
+      this._scene = ui.scene;
+      this._scene.onSceneClick((e) => {
+        const { x, y } = e.data.global;
+        const shape = this._shapes.generateShape(x, y);
+        this._shapes.generatedShapes.push(shape);
+      });
+      const controls = ui.controls;
+      const refreshControlsUI = () => {
+        controls.refreshUI(this._shapes.shapesPerSec.toString(), this._shapes.gravity.toString());
+      };
+      controls.decreaseItems(() => {
+        this._shapes.shapesPerSec--;
+        refreshControlsUI();
+      });
+      controls.increaseItems(() => {
+        this._shapes.shapesPerSec++;
+        refreshControlsUI();
+      });
+      controls.decreaseGravity(() => {
+        this._shapes.gravity--;
+        refreshControlsUI();
+      });
+      controls.increaseGravity(() => {
+        this._shapes.gravity++;
+        refreshControlsUI();
+      });
+    }
+    update(shouldGenerate) {
+      const shapesPerSec = this._shapes.shapesPerSec;
+      const generatedShapes = this._shapes.generatedShapes;
+      this._info.refreshUI(this._scene.getCurrentShapes(), this._scene.getTotalShapesArea());
+      if (shapesPerSec > 0 && shouldGenerate) {
+        this._shapes.onGenerated();
+        this._scene.addToScene(generatedShapes);
+      }
+      if (generatedShapes.length > 0) {
+        this._scene.addToScene(generatedShapes);
+      }
+      generatedShapes.forEach((shape) => {
+        const x = shape.x;
+        const y = shape.y + this._shapes.gravity;
+        shape.setTransform(x, y);
+        if (y > Dimentions.CH + 150) {
+          this._scene.removeFromScene(shape);
+          generatedShapes.splice(generatedShapes.indexOf(shape), 1);
+        }
+      });
+    }
+    run() {
+      const ticker = this._scene.app.ticker;
+      const FPS = Math.round(ticker.FPS);
+      let sec = 0;
+      let shouldGenerate = false;
+      ticker.add((delta) => {
+        sec += delta;
+        shouldGenerate = Math.floor(sec) % FPS === 0 ? true : false;
+        this.update(shouldGenerate);
+      });
+    }
+  };
+
+  // src/utils/utils.ts
+  var randomize = (max) => {
+    return Math.floor(Math.random() * max);
+  };
+
+  // src/model/Shapes.ts
   var Shapes = class {
     constructor() {
       this._shapesPerSec = 0;
@@ -24030,9 +24113,6 @@ void main() {
     get generatedShapes() {
       return this._generatedShapes;
     }
-    set generatedShapes(value) {
-      this._generatedShapes = value;
-    }
     getRandomColor() {
       const hex = "0123456789abcdef";
       let color = "0x";
@@ -24044,18 +24124,26 @@ void main() {
     getRandomShape() {
       return this._shapes[randomize(this._shapes.length)];
     }
+    removeShapeHandler(shape, tint) {
+      const generatedShapes = this._generatedShapes;
+      generatedShapes.forEach((gs) => {
+        if (gs.name === shape.name) {
+          gs.tint = tint;
+        }
+      });
+      generatedShapes.splice(generatedShapes.indexOf(shape), 1);
+      shape.destroy();
+    }
     generateShape(x, y) {
       const _x = x ? x : randomize(Dimentions.CW - 50);
       const _y = y ? y : -100;
       const color = this.getRandomColor();
       const shape = this.getRandomShape();
-      const generatedShapes = this._generatedShapes;
       const generated = shape.generate(_x, _y, color);
       generated.interactive = true;
       generated.on("click", (e) => {
         e.stopPropagation();
-        generatedShapes.splice(generatedShapes.indexOf(generated), 1);
-        generated.destroy();
+        this.removeShapeHandler(generated, 65280);
       });
       return generated;
     }
@@ -24071,6 +24159,7 @@ void main() {
   var Circle2 = class {
     generate(x, y, color) {
       const circle = new Graphics();
+      circle.name = "circle";
       circle.beginFill(color).drawCircle(x, y, 50).endFill();
       return circle;
     }
@@ -24078,6 +24167,7 @@ void main() {
   var Elipse = class {
     generate(x, y, color) {
       const elipse = new Graphics();
+      elipse.name = "elipse";
       elipse.beginFill(color).drawEllipse(x, y, 75, 50).endFill();
       return elipse;
     }
@@ -24092,17 +24182,19 @@ void main() {
         new Point(triangleWidth, 0),
         new Point(triangleWidth / 2, triangleHeight)
       ];
+      triangle.name = "triangle";
       triangle.beginFill(color).drawPolygon(triangleParams).setTransform(x, y).endFill();
       return triangle;
     }
   };
   var Rectangle2 = class {
     generate(x, y, color) {
-      const rect = new Graphics();
+      const rectangle = new Graphics();
       const rectWidth = 100;
       const recrHeight = rectWidth;
-      rect.beginFill(color).drawRect(x, y, rectWidth, recrHeight).endFill();
-      return rect;
+      rectangle.name = "rectangle";
+      rectangle.beginFill(color).drawRect(x, y, rectWidth, recrHeight).endFill();
+      return rectangle;
     }
   };
   var Pentagon = class {
@@ -24116,6 +24208,7 @@ void main() {
         new Point(pentaWidth, pentaWidth),
         new Point(0, pentaWidth)
       ];
+      pentagon.name = "pentagon";
       pentagon.beginFill(color).drawPolygon(pentaParams).setTransform(x, y).endFill();
       return pentagon;
     }
@@ -24125,6 +24218,7 @@ void main() {
       const hexagon = new Graphics();
       const hexRadius = 60;
       const hexHeight = hexRadius * Math.sqrt(3);
+      hexagon.name = "hexagon";
       hexagon.beginFill(color).drawPolygon([
         new Point(-hexRadius, 0),
         new Point(-hexRadius / 2, hexHeight / 2),
@@ -24207,7 +24301,7 @@ void main() {
     }
   };
 
-  // src/mvc/UI.ts
+  // src/view/UI.ts
   var UI = class {
     constructor() {
       this._info = new InfoPanel();
@@ -24225,85 +24319,14 @@ void main() {
     }
   };
 
-  // src/mvc/Generator.ts
-  var Generator = class {
-    constructor() {
-      const ui = new UI();
-      const shapes = new Shapes();
-      this._shapes = shapes;
-      this._info = ui.info;
-      this._scene = ui.scene;
-      this._scene.app.stage.on("click", (e) => {
-        const x = e.data.global.x;
-        const y = e.data.global.y;
-        const shape = this._shapes.generateShape(x, y);
-        this._scene.app.stage.addChild(shape);
-        this._shapes.generatedShapes.push(shape);
-      });
-      const controls = ui.controls;
-      const refreshControlsUI = () => {
-        controls.refreshUI(this._shapes.shapesPerSec.toString(), this._shapes.gravity.toString());
-      };
-      controls.decreaseItems(() => {
-        this._shapes.shapesPerSec--;
-        refreshControlsUI();
-      });
-      controls.increaseItems(() => {
-        this._shapes.shapesPerSec++;
-        refreshControlsUI();
-      });
-      controls.decreaseGravity(() => {
-        this._shapes.gravity--;
-        refreshControlsUI();
-      });
-      controls.increaseGravity(() => {
-        this._shapes.gravity++;
-        refreshControlsUI();
-      });
-    }
-    update(shouldGenerate) {
-      const app = this._scene.app;
-      const shapesPerSec = this._shapes.shapesPerSec;
-      const generatedShapes = this._shapes.generatedShapes;
-      if (shapesPerSec === 0) {
-        app.stage.removeChildren();
-        generatedShapes.length = 0;
-        this._info.refreshUI("0", "0");
-        return;
-      }
-      if (shapesPerSec > 0 && shouldGenerate) {
-        this._shapes.onGenerated();
-        generatedShapes.forEach((shape) => {
-          app.stage.addChild(shape);
-        });
-        this._info.refreshUI(app.stage.children.length.toString(), this._scene.getTotalShapesArea());
-      }
-      generatedShapes.forEach((shape) => {
-        const x = shape.x;
-        const y = shape.y + this._shapes.gravity;
-        shape.setTransform(x, y);
-        if (y > Dimentions.CH + 150) {
-          app.stage.removeChild(shape);
-          generatedShapes.splice(generatedShapes.indexOf(shape), 1);
-        }
-      });
-    }
-    run() {
-      const ticker = this._scene.app.ticker;
-      const FPS = Math.round(ticker.FPS);
-      let sec = 0;
-      let shouldGenerate = false;
-      ticker.add((delta) => {
-        sec += delta;
-        shouldGenerate = Math.floor(sec) % FPS === 0 ? true : false;
-        this.update(shouldGenerate);
-      });
-    }
+  // src/main.ts
+  var main = () => {
+    const model = new Shapes();
+    const view = new UI();
+    const controller = new Generator(model, view);
+    controller.run();
   };
-
-  // src/index.ts
-  var generator = new Generator();
-  generator.run();
+  window.onload = main;
 })();
 /*
 object-assign
